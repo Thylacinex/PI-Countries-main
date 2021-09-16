@@ -1,4 +1,5 @@
 const express = require('express');
+<<<<<<< HEAD
 // Middlewares
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -6,12 +7,23 @@ const morgan = require('morgan');
 // Routes
 const countries = require('./routes/countries.js');
 const activity = require('./routes/activity.js');
+=======
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const routes = require('./routes/index.js');
+
+require('./db.js');
+>>>>>>> 4893d8516300c4330b2b412c0e25812e4587a867
 
 const server = express();
 
 server.name = 'API';
 
+<<<<<<< HEAD
 // Middlewares
+=======
+>>>>>>> 4893d8516300c4330b2b412c0e25812e4587a867
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
@@ -24,6 +36,7 @@ server.use((req, res, next) => {
   next();
 });
 
+<<<<<<< HEAD
 // Routes
 server.get('/', async (req, res) => {
   res.json({message: 'API ready to be used on endpoints: /countries /countries?name /countries/countryId'});
@@ -32,6 +45,9 @@ server.get('/', async (req, res) => {
 server.use('/countries', countries);
 server.use('/activity', activity);
 
+=======
+server.use('/', routes);
+>>>>>>> 4893d8516300c4330b2b412c0e25812e4587a867
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
